@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 # helloPython.py
 # Author @Heathcleff
-# -*- coding: utf-8 -*-
+
 '''
 这是多行注释，注释在执行时并不会对被三个引号（单引号或双引号）包围起来的字段，
 或以“#”号开头的行。
