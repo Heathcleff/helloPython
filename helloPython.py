@@ -37,3 +37,5 @@ print("Python支持一个语句" \
 name = input("Please enter your name:\n")
 print("你好，", name, "，看到这种输出效果了吗？\n",
       "这就是标准输入函数和标准输出函数的复合使用效果。")
+
+##
