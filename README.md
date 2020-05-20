@@ -347,5 +347,68 @@ for i in range(n2):
 print("n! = ",fac2)
 ```
 
-循环图解如下：
+### 函数
+
+#### 自定义函数
+
+在Python中，我们通过```def```关键字来声明定义一个函数，其结构如下：
+
+```python
+def 函数名(参数):
+    函数体
+    return 返回值 
+```
+
+这里一定要注意缩进，还是那句话，缩进是Python中划分程序结构的唯一依据。
+
+下面我们做一道计算画图题，给定一个二元函数
+
+$$
+f(x,y)=x^2+y^2
+$$
+计算$f(2,3)$并作出其函数图像。
+
+这个实例中我们将会用到以下几个Python新特性：
+
+- pip管理器与Python包的调用
+- matplotlib包
+- 利用def声明函数
+- 调节函数内参数
+- 输出文件
+
+代码如下：
+
+```python 
+# -*- coding:utf-8 -*-
+# function.py
+# author @zeshen
+# function - Demonstrating how to define a function and call to reuse it.
+
+import matplotlib.pyplot as plt
+import numpy as np
+import math as m
+
+def fx(x):
+    f=(2.7**x+2.7**(-x))/(2.7**x-2.7**(-x))
+    return f
+
+res=fx(2.0)
+print(res)
+
+x=np.linspace(-2,2,1000)
+y=fx(x)
+plt.figure(figsize=(10.8,10.8))
+plt.plot(x,y)
+plt.savefig('plotexample1.png')
+plt.show()
+
+x1=np.random.random(50)
+x2=-1*np.random.random(50)
+print(x1)
+plt.figure(figsize=(10.8,10.8))
+plt.plot(x1,(2.7**x1+2.7**(-x1))/(2.7**x1-2.7**(-x1)),'rx')
+plt.plot(x2,(2.7**x2+2.7**(-x2))/(2.7**x2-2.7**(-x2)),'bo')
+plt.savefig('plotexample2.png')
+plt.show()
+```
 
