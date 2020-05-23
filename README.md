@@ -335,7 +335,16 @@ print("n! = ", fac1)
 
 #### for循环
 
-相较于while循环，for循环更加常用，要注意的是，for循环和while循环的遍历逻辑有所区别，下面我们用for循环编写上面的计算阶乘的小程序（同见仓库中factorial.py）：
+相较于while循环，for循环更加常用，语法如下:
+
+```python
+for 元素 in 集合:
+    循环体
+```
+
+
+
+要注意的是，for循环和while循环的遍历逻辑有所区别，下面我们用for循环编写上面的计算阶乘的小程序（同见仓库中factorial.py）：
 
 ```py
 n2=int(input("请输入任意整数：\n"))
@@ -347,7 +356,25 @@ for i in range(n2):
 print("n! = ",fac2)
 ```
 
-### 函数
+我们不难看出，Python的for循环语句是使循环变量```temp```在给定的一个循环范围（通常是一组生成的数）内遍历，每遍历一个范围内的元素，就执行一次循环体内的语句，直至循环范围遍历完毕。
+
+与while循环语句不同的是，Python下的for循环语句并不需要在循环体内添加循环变量的迭代语句，for循环依赖循环开头元素在集合中的迭代。
+
+这里需要说明一下```range```函数。```range```函数能返回一个==**[0 , n)**==，长度为n的序列，可以自能够以你所需要的起始和结束点，具体用法如下：
+
+```py
+range(n)	#表示返回一个长度为n的序列
+range(a,b)	#表示返回一个[a,b)范围内的序列，默认步长为1
+range(a,b,n)	#表示返回一个[a,b)范围内的序列，设置步长为n
+tuple(range(...))	#表示将range生成的序列传递生成一个元组
+list(range(...))	#表示将range生成的序列传递生产一个列表
+```
+
+列表和元组是Python的两种数据结构，请参见文档[数据结构](###数据结构)部分的介绍，再次不做过多解释。
+
+
+
+### 函数与参数传递
 
 #### 自定义函数
 
@@ -361,17 +388,12 @@ def 函数名(参数):
 
 这里一定要注意缩进，还是那句话，缩进是Python中划分程序结构的唯一依据。
 
-下面我们做一道计算画图题，给定一个二元函数
-
-$$
-f(x,y)=x^2+y^2
-$$
-计算$f(2,3)$并作出其函数图像。
+下面我们做一道计算画图题，任意	给定一个函数，计算$f(3)$并作出其函数图像。
 
 这个实例中我们将会用到以下几个Python新特性：
 
 - pip管理器与Python包的调用
-- matplotlib包
+- matplotlib和numpy包
 - 利用def声明函数
 - 调节函数内参数
 - 输出文件
@@ -386,29 +408,28 @@ $$
 
 import matplotlib.pyplot as plt
 import numpy as np
-import math as m
+
 
 def fx(x):
-    f=(2.7**x+2.7**(-x))/(2.7**x-2.7**(-x))
+    f = ((np.exp(x) + np.exp(-x)) / 2 / (np.exp(x) - np.exp(-x))) + np.sinh(x)
     return f
 
-res=fx(2.0)
-print(res)
 
-x=np.linspace(-2,2,1000)
-y=fx(x)
-plt.figure(figsize=(10.8,10.8))
-plt.plot(x,y)
-plt.savefig('plotexample1.png')
-plt.show()
-
-x1=np.random.random(50)
-x2=-1*np.random.random(50)
-print(x1)
-plt.figure(figsize=(10.8,10.8))
-plt.plot(x1,(2.7**x1+2.7**(-x1))/(2.7**x1-2.7**(-x1)),'rx')
-plt.plot(x2,(2.7**x2+2.7**(-x2))/(2.7**x2-2.7**(-x2)),'bo')
-plt.savefig('plotexample2.png')
+print(fx(3))
+x1 = np.linspace(-5, 0, 100)
+y1 = fx(x1)
+x2 = np.linspace(0, 5, 100)
+y2 = fx(x2)
+plt.figure(figsize=(10.8, 10.8))
+plt.grid()
+plt.plot(x1, y1, 'b-', x2, y2, 'r-')
+plt.yscale('linear')
+plt.savefig("plotexample.png",dpi=600)
 plt.show()
 ```
 
+> **程序说明 ** 
+>
+> - 
+
+## 数据结构

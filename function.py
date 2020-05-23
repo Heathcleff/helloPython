@@ -5,27 +5,21 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import math as m
+
 
 def fx(x):
-    f=(2.7**x+2.7**(-x))/(2.7**x-2.7**(-x))
+    f = ((np.exp(x) + np.exp(-x)) / 2 / (np.exp(x) - np.exp(-x))) + np.sinh(x)
     return f
 
-res=fx(2.0)
-print(res)
 
-x=np.linspace(-2,2,1000)
-y=fx(x)
-plt.figure(figsize=(10.8,10.8))
-plt.plot(x,y)
-plt.savefig('plotexample1.png')
-plt.show()
-
-x1=np.random.random(50)
-x2=-1*np.random.random(50)
-print(x1)
-plt.figure(figsize=(10.8,10.8))
-plt.plot(x1,(2.7**x1+2.7**(-x1))/(2.7**x1-2.7**(-x1)),'rx')
-plt.plot(x2,(2.7**x2+2.7**(-x2))/(2.7**x2-2.7**(-x2)),'bo')
-plt.savefig('plotexample2.png')
+print(fx(3))
+x1 = np.linspace(-5, 0, 100)
+y1 = fx(x1)
+x2 = np.linspace(0, 5, 100)
+y2 = fx(x2)
+plt.figure(figsize=(10.8, 10.8))
+plt.grid()
+plt.plot(x1, y1, 'b-', x2, y2, 'r-')
+plt.yscale('linear')
+plt.savefig("plotexample.png",dpi=600)
 plt.show()
