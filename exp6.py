@@ -29,7 +29,7 @@ print(joke_evaluation.format(hilarious))
 
 # 将字符串赋值给w
 w = "This is the left side of..."
-#将字符串赋值给e
+# 将字符串赋值给e
 e = "This is the left side of w&s"
 # 将w和e两个字符串进行拼接，然后输出拼接结果
-print(w+e)
+print(w + e)
